@@ -1,13 +1,26 @@
 
 package bt.edu.gcit;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class Alien {
 
+    @Value("32")
     private int age;
     private Laptop lap;
+    @Value("32000")
     private int salary;
-    private Computer comp;
+   
     
+    @Autowired
+    @Qualifier("laptop")
+    private Computer comp;
 
     public int getAge(){
         return age;
@@ -29,7 +42,7 @@ public class Alien {
     // }
 
     public Alien(){
- System.out.println("Alien object craeted");
+        System.out.println("Alien object craeted");
     }
      // public Laptop getLap(){
     //     return lap;
